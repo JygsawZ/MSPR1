@@ -1,12 +1,17 @@
 import React from "react";
 import './App.css'
+import { Header } from "./component/Header";
+import {Accueil} from "./pages/Accueil.jsx";
+import {Footer} from "./component/Footer.jsx";
 
 export default function App() {
     return (
         <React.Fragment>
-            <h1 className="flex text-5xl text-red-800 underline shadow-2xl">
-                Welcome to hell !!!!!
-            </h1>
+            <div className="bg-black">
+                <Header />
+                <Accueil />
+                <Footer />
+            </div>
         </React.Fragment>
     )
 }
