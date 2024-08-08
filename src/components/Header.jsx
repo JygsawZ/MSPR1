@@ -31,7 +31,7 @@ export const Header = () => {
                 </label>
             </div>
             <div className="flex justify-center">
-                <img className="max-h-28 max-w-full" src="/public/corefeast3.jpg"/>
+                <img className="max-h-28 max-w-full" src="/corefeast3.jpg"/>
             </div>
         </React.Fragment>
     )
