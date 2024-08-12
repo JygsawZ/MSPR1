@@ -1,11 +1,11 @@
 import React from "react";
-import ArtisteList from "../components/GroupCard.jsx";
+import GroupList from "../components/GroupList.jsx";
 
 export const Accueil = () => {
     return (
         <React.Fragment>
             <div className="flex justify-center bg-black">
-                <ArtisteList />
+                <GroupList />
             </div>
         </React.Fragment>
     )
