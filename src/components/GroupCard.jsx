@@ -16,7 +16,7 @@ const GroupCard = ({ artiste }) => {
                             <div className="badge badge-neutral badge-xs sm:badge-sm md:badge-md">{artiste.tag}</div>
                         </h2>
                         <div className="md:text-xl lg:text-2xl">{artiste.jour} - {artiste.heure}</div>
-                        <div className="md:text-xl lg:text-2xl">{artiste.scene}</div>
+                        <div className="md:text-xl lg:text-2xl">Scène: {artiste.scene}</div>
                         <div className="card-actions justify-end">
                             <div className="collapse bg-black">
                                 <input type="checkbox" className="peer"/>
