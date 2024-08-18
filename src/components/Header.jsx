@@ -4,14 +4,12 @@ import {Link} from "react-router-dom";
 export const Header = () => {
 
     const handleFaqRedirect = () => {
-        window.location.href = "http://corefeast-festival.local/corefeast/faq/";
+        window.location.href = "http://corefeast-festival.local/corefeast/";
     };
 
     const handleStoreRedirect = () => {
         window.location.href = "http://corefeast-festival.local/\n";
     };
-
-
 
 
     return (

@@ -17,7 +17,6 @@ export default function App() {
                     <Route path="/" element={<Accueil />}/>
                     <Route path="/programmation" element={<Programmation />}/>
                     <Route path="/plan" element={<InteractiveMap />}/>
-                    {/*<Route path="/faq" element={<Faq/>}/>*/}
                 </Routes>
                 <Footer />
             </div>
