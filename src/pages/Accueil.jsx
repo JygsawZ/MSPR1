@@ -1,5 +1,6 @@
 import React from "react";
 import GroupList from "../components/GroupList.jsx";
+import InteractiveMap from "../components/InteractiveMap.jsx";
 
 export const Accueil = () => {
     return (
@@ -23,7 +24,10 @@ export const Accueil = () => {
                 </div>
             </div>
             <div className="flex justify-center bg-black">
-                <GroupList/>
+                <GroupList />
+            </div>
+            <div>
+                <InteractiveMap />
             </div>
         </React.Fragment>
     )

@@ -6,6 +6,7 @@ import { Accueil } from "./pages/Accueil.jsx";
 import { Footer } from "./components/Footer.jsx";
 import {Route, Routes} from "react-router-dom";
 import {Programmation} from "./pages/Programmation.jsx";
+import InteractiveMap from "./components/InteractiveMap.jsx";
 
 export default function App() {
     return (
@@ -13,12 +14,11 @@ export default function App() {
             <div className="bg-black">
                 <Header />
                 <Routes>
-                    <Route path="/" element={<Accueil/>}/>
-                    <Route path="/programmation" element={<Programmation/>}/>
-                    {/*<Route path="/plan" element={<PlanDuFestivale/>}/>*/}
+                    <Route path="/" element={<Accueil />}/>
+                    <Route path="/programmation" element={<Programmation />}/>
+                    <Route path="/plan" element={<InteractiveMap />}/>
                     {/*<Route path="/faq" element={<Faq/>}/>*/}
                 </Routes>
-                <Accueil />
                 <Footer />
             </div>
         </React.Fragment>

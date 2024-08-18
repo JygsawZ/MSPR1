@@ -38,7 +38,7 @@ export const Header = () => {
                             className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow">
                             <li><Link to="/">Accueil</Link></li>
                             <li><Link to="/programmation">Programmation</Link></li>
-                            <li><a>Plan su festival</a></li>
+                            <li><Link to="/plan">Plan du festival</Link></li>
                             <li><a onClick={handleStoreRedirect}>Billeterie</a></li>
                             <li><a onClick={handleFaqRedirect}>FAQ</a></li>
                         </ul>
@@ -49,12 +49,13 @@ export const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to="/">Accueil</Link></li>
                         <li><Link to="/programmation">Programmation</Link></li>
+                        <li><Link to="/plan">Plan du festival</Link></li>
                         <li><a onClick={handleStoreRedirect}>Billeterie</a></li>
                         <li><a onClick={handleFaqRedirect}>FAQ</a></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className="btn btn-outline">Billeterie</button>
+                <button className="btn btn-outline">Billeterie</button>
                 </div>
             </div>
             <div className="flex justify-center">

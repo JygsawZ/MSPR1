@@ -43,10 +43,15 @@ const GroupList = () => {
         <React.Fragment>
             <div className="lg:px-52">
                 <div className="flex justify-center ">
-                    <button className="btn btn-sm md:btn-md md:mx-2" onClick={() => setSelectedDay('Tous')}>Tous</button>
-                    <button className="btn btn-sm md:btn-md md:mx-2" onClick={() => setSelectedDay('Vendredi')}>Vendredi</button>
-                    <button className="btn btn-sm md:btn-md md:mx-2" onClick={() => setSelectedDay('Samedi')}>Samedi</button>
-                    <button className="btn btn-sm md:btn-md md:mx-2" onClick={() => setSelectedDay('Dimanche')}>Dimanche</button>
+                    {['Tous', 'Vendredi', 'Samedi', 'Dimanche'].map(day => (
+                        <button
+                            key={day}
+                            className={`btn btn-xs mx-1 sm:btn-sm md:btn-md lg:btn-lg md:mx-2 ${selectedDay === day ? 'border-white bg-black text-white' : ''}`}
+                            onClick={() => setSelectedDay(day)}
+                        >
+                            {day}
+                        </button>
+                    ))}
                 </div>
                 {Object.keys(groupedArtistes).map(day => (
                     <div key={day}>
