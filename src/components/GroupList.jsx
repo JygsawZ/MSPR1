@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import GroupCard from './GroupCard';
+import {BASE_URL} from "../config/config.jsx";
 
 const GroupList = () => {
     const [artistes, setArtistes] = useState([]);
@@ -9,7 +10,7 @@ const GroupList = () => {
     useEffect(() => {
         const fetchArtistes = async () => {
             try {
-                const response = await axios.get('http://corefeast-festival.local/wp-json/custom/v1/artistes');
+                const response = await axios.get(`${BASE_URL}/corefeast-wp/wp-json/custom/v1/artistes`);
                 const order = { 'Vendredi': 1, 'Samedi': 2, 'Dimanche': 3 };
                 const hourOrder = {'17h00': 1, '18h30': 2, '20h00': 3, '21h30': 4, '23h00': 5, '1h30': 6};
 

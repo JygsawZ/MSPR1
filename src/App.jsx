@@ -7,10 +7,12 @@ import { Footer } from "./components/Footer.jsx";
 import {Route, Routes} from "react-router-dom";
 import {Programmation} from "./pages/Programmation.jsx";
 import InteractiveMap from "./components/InteractiveMap.jsx";
+import {HelmetProvider} from "react-helmet-async";
 
 export default function App() {
     return (
         <React.Fragment>
+            <HelmetProvider>
             <div className="bg-black">
                 <Header />
                 <Routes>
@@ -20,6 +22,7 @@ export default function App() {
                 </Routes>
                 <Footer />
             </div>
+            </HelmetProvider>
         </React.Fragment>
     );
 }

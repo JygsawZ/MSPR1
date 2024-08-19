@@ -1,14 +1,15 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {BASE_URL} from "../config/config.jsx";
 
 export const Header = () => {
 
     const handleFaqRedirect = () => {
-        window.location.href = "http://corefeast-festival.local/corefeast/";
+        window.location.href = `${BASE_URL}/corefeast-wp/corefeast/`;
     };
 
     const handleStoreRedirect = () => {
-        window.location.href = "http://corefeast-festival.local/\n";
+        window.location.href = `${BASE_URL}/corefeast-wp/`;
     };
 
 
