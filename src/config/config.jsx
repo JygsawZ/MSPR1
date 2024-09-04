@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://corefeast.infinityfreeapp.com/';
+export const BASE_URL = 'http://billetterie.infinityfreeapp.com';

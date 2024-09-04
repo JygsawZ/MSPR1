@@ -42,7 +42,7 @@ export const Header = () => {
                             <li><a onClick={handleFaqRedirect}>FAQ</a></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">Corefeast</a>
+                    <Link to="/" className="btn btn-ghost text-xl">Corefeast</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -54,7 +54,7 @@ export const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                <button className="btn btn-outline">Billeterie</button>
+                <button className="btn btn-outline" onClick={handleStoreRedirect}>Billeterie</button>
                 </div>
             </div>
             <div className="flex justify-center">
