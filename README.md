@@ -18,8 +18,6 @@ Plonge dans l'univers intense du **CoreFeast Festival** ! Prépare-toi à vivre 
 ## 🚀 Fonctionnalités du site
 - 🎤 **Programme des concerts** : Accède à la liste des artistes et aux horaires des performances.
 - 🎟 **Réservation de billets** : Intégration avec le système de billetterie.
-- 📰 **Actualités et mises à jour** : Articles et annonces via WordPress.
-- 🤘 **Galerie multimédia** : Photos et vidéos des éditions précédentes.
 - 📍 **Infos pratiques** : Localisation, hébergement, transports et règles du festival.
 
 ## 🛠 Technologies utilisées
