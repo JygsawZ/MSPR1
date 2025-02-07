@@ -1,15 +1,17 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {BASE_URL} from "../config/config.jsx";
+import {BASE_URL, BASE_URL2} from "../config/config.jsx";
 
 export const Header = () => {
 
     const handleFaqRedirect = () => {
-        window.location.href = `${BASE_URL}/corefeast-wp/corefeast/`;
+        // window.location.href = `${BASE_URL}/corefeast-wp/corefeast/`;
+        window.location.href = `${BASE_URL2}`;
     };
 
     const handleStoreRedirect = () => {
-        window.location.href = `${BASE_URL}/corefeast-wp/`;
+        // window.location.href = `${BASE_URL}/corefeast-wp/`;
+        window.location.href = `${BASE_URL2}`
     };
 
 
@@ -35,9 +37,9 @@ export const Header = () => {
                         <ul
                             tabIndex={0}
                             className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow">
-                            <li><Link to="/">Accueil</Link></li>
-                            <li><Link to="/programmation">Programmation</Link></li>
-                            <li><Link to="/plan">Plan du festival</Link></li>
+                            <li><Link to="../">Accueil</Link></li>
+                            <li><Link to="../programmation">Programmation</Link></li>
+                            <li><Link to="../plan">Plan du festival</Link></li>
                             <li><a onClick={handleStoreRedirect}>Billeterie</a></li>
                             <li><a onClick={handleFaqRedirect}>FAQ</a></li>
                         </ul>

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+
 
 // Importation des icônes personnalisées
 import sceneIconUrl from '/assets/icons/scene.png';
@@ -44,16 +45,35 @@ const pointsOfInterest = [
 
 const InteractiveMap = () => {
     const [userLocation, setUserLocation] = useState(null);
-    const [map, setMap] = useState(null);
+
+    const mapRef = useRef(null);
+
+    const handleSetMap = (newMap) => {
+            mapRef.current = newMap;
+    };
 
     useEffect(() => {
-        if (map) {
-            map.on('locationfound', (e) => {
-                L.marker(e.latlng).addTo(map).bindPopup('Vous êtes ici').openPopup();
-                map.setView(e.latlng, 13);
+        console.log("mapRef.current :", mapRef.current); // Vérifier ce que contient mapRef.current
+
+        if (mapRef.current) {
+            console.log("Méthodes disponibles sur mapRef.current :", Object.keys(mapRef.current)); // Voir quelles méthodes existent
+
+            mapRef.current.eachLayer((layer) => {
+                if (layer instanceof L.Marker) {
+                    mapRef.current.removeLayer(layer);
+                }
             });
+
+            if (!mapRef.current.hasEventListeners('locationfound')) {
+                mapRef.current.on('locationfound', (e) => {
+                    L.marker(e.latlng).addTo(mapRef.current).bindPopup('Vous êtes ici').openPopup();
+                    mapRef.current.setView(e.latlng, 13);
+                });
+            }
         }
-    }, [map]);
+    }, []);
+
+
 
     const handleGeolocation = () => {
         if (navigator.geolocation) {
@@ -61,8 +81,8 @@ const InteractiveMap = () => {
                 (position) => {
                     const { latitude, longitude } = position.coords;
                     setUserLocation([latitude, longitude]);
-                    if (map) {
-                        map.locate({ setView: true, maxZoom: 16 });
+                    if (mapRef) {
+                        mapRef.locate({ setView: true, maxZoom: 16 });
                     }
                 },
                 (error) => {
@@ -84,10 +104,11 @@ const InteractiveMap = () => {
             </div>
             <div className="flex h-96 flex-col rounded-b p-2 lg:px-52">
                 <MapContainer
-                    center={[48.859607002831574, 2.3845481224854352]} // Coordonnées de l'exemple  48.859607002831574, 2.3845
+                    key="unique-map-key"
+                    center={[48.859607002831574, 2.3845481224854352]} // Coordonnées de l'exemple 48.859607002831574, 2.3845
                     zoom={17}
                     style={{ height: '100%', width: '100%', borderRadius: '10px' }}
-                    whenCreated={setMap}
+                    whenCreated={handleSetMap}
                 >
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -110,10 +131,7 @@ const InteractiveMap = () => {
 
                 {/* Bouton Localiser */}
                 <div className="flex justify-center p-4">
-                    <button
-                        className="btn-white btn"
-                        onClick={handleGeolocation}
-                    >
+                    <button className="btn" onClick={handleGeolocation}>
                         Me Localiser
                     </button>
                 </div>

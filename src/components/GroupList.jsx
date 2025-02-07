@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import GroupCard from './GroupCard'; // Composant affichant les détails d'un artiste.
-import {BASE_URL} from "../config/config.jsx"; // URL de base pour les requêtes API.
+import {BASE_URL, BASE_URL3} from "../config/config.jsx";
 
 const GroupList = () => {
     // État pour stocker la liste des artistes récupérés depuis l'API
@@ -9,13 +9,13 @@ const GroupList = () => {
     // État pour suivre le jour sélectionné pour le filtrage ('Tous' par défaut)
     const [selectedDay, setSelectedDay] = useState('Tous');
 
-    // useEffect est utilisé pour exécuter du code après que le composant est monté
+    // useEffect est utilisé pour exécuter du code après que le composant soit monté
     useEffect(() => {
         // Fonction asynchrone pour récupérer les artistes depuis l'API
         const fetchArtistes = async () => {
             try {
-                // Requête HTTP GET pour récupérer la liste des artistes
-                const response = await axios.get(`${BASE_URL}/corefeast-wp/wp-json/custom/v1/artistes`);
+                // Requête HTTP GET pour récupérer la liste des artistes (set up function)
+                const response = await axios.get(`${BASE_URL3}/wp-json/custom/v1/artistes`);
 
                 // Ordres personnalisés pour trier les artistes par jour et par heure
                 const order = { 'Vendredi': 1, 'Samedi': 2, 'Dimanche': 3 }; // Ordre des jours
@@ -26,7 +26,7 @@ const GroupList = () => {
                     if (order[a.jour] !== order[b.jour]) {
                         return order[a.jour] - order[b.jour]; // Tri par jour
                     }
-                    return hourOrder[a.heure] - hourOrder[b.heure]; // Tri par heure
+                    return hourOrder[a.heure] - hourOrder[b.heure]; // Tri par heure (clean up function)
                 });
 
                 // Mise à jour de l'état des artistes avec la liste triée
@@ -37,7 +37,7 @@ const GroupList = () => {
         };
 
         fetchArtistes(); // Appel de la fonction pour récupérer les artistes
-    }, []); // Le tableau vide [] signifie que cet effet ne s'exécute qu'une seule fois au montage du composant
+    }, []); // Le tableau vide (tableau de dépendance) [] signifie que cet effet ne s'exécute qu'une seule fois au montage du composant et non plus à chaque mise à jour du state
 
     // Filtrage des artistes selon le jour sélectionné ('Tous' affiche tous les artistes)
     const filteredArtistes = selectedDay === 'Tous' ? artistes : artistes.filter(artiste => artiste.jour === selectedDay);
@@ -76,7 +76,7 @@ const GroupList = () => {
                         </span>
                         {/* Pour chaque artiste dans le groupe du jour, on affiche une GroupCard */}
                         {groupedArtistes[day].map(artiste => (
-                            <GroupCard key={artiste.ID} artiste={artiste} /> // Affichage des détails de chaque artiste
+                            <GroupCard key={artiste.ID} artiste={artiste}/> // Affichage des détails de chaque artiste
                         ))}
                     </div>
                 ))}

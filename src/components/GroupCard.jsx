@@ -1,11 +1,18 @@
 import React from 'react';
+import PropTypes from "prop-types";
+import {useNavigate} from 'react-router-dom';
 
 const GroupCard = ({ artiste }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/artiste/${artiste.ID}`, { state: { artiste } });
+    };
 
     return (
         <React.Fragment>
             <div className="p-4">
-                <div className="card bg-base-100 shadow-xl lg:card-normal">
+                <div className="card bg-base-100 shadow-xl lg:card-normal" onClick={handleClick}>
                     <figure>
                         <img className="w-full"
                              src={artiste.img_url}
@@ -35,6 +42,19 @@ const GroupCard = ({ artiste }) => {
             </div>
         </React.Fragment>
     );
+};
+
+GroupCard.propTypes = {
+    artiste: PropTypes.shape({
+        ID: PropTypes.string.isRequired,
+        nom: PropTypes.string.isRequired,
+        tag: PropTypes.string.isRequired,
+        jour: PropTypes.string.isRequired,
+        heure: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        scene: PropTypes.string.isRequired,
+        img_url: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default GroupCard;
